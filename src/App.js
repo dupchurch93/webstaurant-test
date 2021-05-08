@@ -20,7 +20,7 @@ function App() {
     }
     // update the total either way
     updatedBuyList.total = updatedBuyList.total + product.price;
-    console.log(buyList)
+    // console.log(buyList)
     // set the BuyList to the updated object
     setBuyList(updatedBuyList)
   }

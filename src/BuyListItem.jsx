@@ -1,4 +1,6 @@
 const BuyListItem = ({product, deleteProduct, addProduct, subtractProduct, setProduct}) => {
+
+
     return(
       <div className="grid border border-gray-200 gap-x-4 rounded shadow p-4" style={{ gridTemplateColumns: "1fr 10fr 1fr 0fr 1fr 0fr 1fr 0fr"}}>
         <img src="https://cdnimg.webstaurantstore.com/images/products/small/228802/1679695.jpg" alt="Refrigerator" className="p-2 rounded border border-gray-200" />
@@ -16,7 +18,7 @@ const BuyListItem = ({product, deleteProduct, addProduct, subtractProduct, setPr
         <span className="flex items-center font-semibold">x</span>
 
         <div className="flex items-center justify-center">
-          <input type="number" className="border border-gray-300 rounded w-24 text-lg px-2" value={product.quantity} />
+          <input type="number" min="0" className="border border-gray-300 rounded w-24 text-lg px-2" value={product.quantity} onChange={(e) => setProduct(e.target.value, product)}/>
         </div>
 
         <span className="flex items-center">=</span>

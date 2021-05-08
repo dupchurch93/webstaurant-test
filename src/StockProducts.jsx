@@ -3,7 +3,6 @@ import StockProductsData from "./data/stockProducts.json";
 const StockProducts = ( {addProduct} ) => {
 
   const handleClick = (product) => {
-    console.log("in handle click")
     addProduct(product)
   }
 
