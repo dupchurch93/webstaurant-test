@@ -11,6 +11,8 @@ const BuyList = ({ buyList, setBuyList }) => {
   };
 
   const setProduct = (newQuant, product) =>{
+    console.log("set product goes off")
+    // if new quantity less than 0 is entered, set to 0
     if(newQuant < 0){
       newQuant = 0
     }
@@ -18,8 +20,6 @@ const BuyList = ({ buyList, setBuyList }) => {
     // get currentQuantity
     const currentQuant = updatedBuyList.addedItems[product.itemNumber].quantity;
     let difference = newQuant - currentQuant;
-    console.log(difference)
-    // if new quantity less than 0 is entered, set to 0
     // set the new quantity
     updatedBuyList.addedItems[product.itemNumber].quantity = newQuant;
     // change the total based on the difference
