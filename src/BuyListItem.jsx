@@ -1,4 +1,4 @@
-const BuyListItem = ({product, deleteProduct, addProduct, subtractProduct, setProduct}) => {
+const BuyListItem = ({product, deleteProduct, setProduct}) => {
 
 
     return(
