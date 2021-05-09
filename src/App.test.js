@@ -18,17 +18,16 @@ describe("The BuyList component", () => {
             expect(grandTotal).toHaveTextContent("$0.00")
         });
     });
-    afterEach(cleanup);
 
     describe("should have items added to it", () => {
         beforeEach(() => {
-            render(<App></App>)
+            render(<App></App>);
         });
         it("should add one dinner fork to the buy list", () => {
             const fork = screen.getByTestId(`product-add-Dinner Fork`);
             fireEvent.click(fork);
             const forkBuyListQuant = screen.getByTestId('product-quantity-Dinner Fork');
-            expect(forkBuyListQuant.value).toEqual("1")
+            expect(forkBuyListQuant.value).toEqual("1");
         });
 
         it("should add three dinner forks to the buy list", () => {
@@ -37,8 +36,17 @@ describe("The BuyList component", () => {
             fireEvent.click(fork);
             fireEvent.click(fork);
             const forkBuyListQuant = screen.getByTestId('product-quantity-Dinner Fork');
-            expect(forkBuyListQuant.value).toEqual("3")
+            expect(forkBuyListQuant.value).toEqual("3");
         });
+
+        it("should update the grand total to equal to the total of all products", () => {
+            const fork = screen.getByTestId(`product-add-Dinner Fork`);
+            const oven = screen.getByTestId(`product-add-Countertop Convection Oven`);
+            fireEvent.click(fork);
+            fireEvent.click(oven);
+            const grandTotal = screen.getByTestId("grand-total");
+            expect(grandTotal).toHaveTextContent("$1400.29")
+        })
     });
 
     afterEach(cleanup)
