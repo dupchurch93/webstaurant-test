@@ -5,20 +5,20 @@ const BuyListItem = ({product, deleteProduct, setProduct}) => {
       <div className="grid border border-gray-200 gap-x-4 rounded shadow p-4" style={{ gridTemplateColumns: "1fr 10fr 1fr 0fr 1fr 0fr 1fr 0fr"}}>
         <img src="https://cdnimg.webstaurantstore.com/images/products/small/228802/1679695.jpg" alt="Refrigerator" className="p-2 rounded border border-gray-200" />
         <div className="flex flex-col flex-grow justify-center">
-          <h3 className="font-semibold text-lg">{product.name}</h3>
+          <h3 data-testid="product-name" className="font-semibold text-lg">{product.name}</h3>
           <p>
             {product.description}
           </p>
         </div>
 
-        <div className="font-semibold text-lg text-red-500 flex items-center justify-end">
+        <div data-testid="product-price" className="font-semibold text-lg text-red-500 flex items-center justify-end">
           ${(Math.round(product.price * 100) / 100).toFixed(2)}
         </div>
 
         <span className="flex items-center font-semibold">x</span>
 
         <div className="flex items-center justify-center">
-          <input type="number" min="0" className="border border-gray-300 rounded w-24 text-lg px-2" value={product.quantity} onChange={(e) => setProduct(e.target.value, product)}/>
+          <input data-testid="product-quantity" type="number" min="0" className="border border-gray-300 rounded w-24 text-lg px-2" value={product.quantity} onChange={(e) => setProduct(e.target.value, product)}/>
         </div>
 
         <span className="flex items-center">=</span>
