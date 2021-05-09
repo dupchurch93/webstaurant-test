@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
+import { render, screen, cleanup, fireEvent } from "@testing-library/react";
 import App from "./App";
 
 describe("The BuyList component", () => {
@@ -18,6 +18,7 @@ describe("The BuyList component", () => {
             expect(grandTotal).toHaveTextContent("$0.00")
         });
     });
+    afterEach(cleanup);
 
     describe("should have items added to it", () => {
         beforeEach(() => {
@@ -25,7 +26,20 @@ describe("The BuyList component", () => {
         });
         it("should add one dinner fork to the buy list", () => {
             const fork = screen.getByTestId(`product-add-Dinner Fork`);
-            expect(fork).toHaveProperty("src", "https://cdnimg.webstaurantstore.com/images/products/small/369282/1504115.jpg")
+            fireEvent.click(fork);
+            const forkBuyListQuant = screen.getByTestId('product-quantity-Dinner Fork');
+            expect(forkBuyListQuant.value).toEqual("1")
+        });
+
+        it("should add three dinner forks to the buy list", () => {
+            const fork = screen.getByTestId(`product-add-Dinner Fork`);
+            fireEvent.click(fork);
+            fireEvent.click(fork);
+            fireEvent.click(fork);
+            const forkBuyListQuant = screen.getByTestId('product-quantity-Dinner Fork');
+            expect(forkBuyListQuant.value).toEqual("3")
         });
     });
+
+    afterEach(cleanup)
 })
