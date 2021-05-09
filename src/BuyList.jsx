@@ -11,6 +11,7 @@ const BuyList = ({ buyList, setBuyList }) => {
   };
 
   const setProduct = (newQuant, product) =>{
+    console.log("value in input", newQuant)
     // if new quantity less than 0 is entered, set to 0
     if(newQuant < 0){
       newQuant = 0
