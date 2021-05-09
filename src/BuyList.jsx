@@ -11,7 +11,6 @@ const BuyList = ({ buyList, setBuyList }) => {
   };
 
   const setProduct = (newQuant, product) =>{
-    console.log("set product goes off")
     // if new quantity less than 0 is entered, set to 0
     if(newQuant < 0){
       newQuant = 0
@@ -29,7 +28,7 @@ const BuyList = ({ buyList, setBuyList }) => {
 
   return (
     <div className="mt-4">
-      <h1 className="font-semibold text-2xl">Buy List</h1>
+      <h1 data-testid="buylist-title" className="font-semibold text-2xl">Buy List</h1>
 
       <div className="border border-gray-200 p-4 rounded shadow mt-2 grid grid-cols-1 gap-y-4">
         {Object.values(buyList.addedItems).map((product) => {

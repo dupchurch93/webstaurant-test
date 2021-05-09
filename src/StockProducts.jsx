@@ -8,7 +8,7 @@ const StockProducts = ( {addProduct} ) => {
 
   return (
   <div className="w-full mt-4">
-    <h1 className="font-semibold text-2xl">Products</h1>
+    <h1 data-testid="products" className="font-semibold text-2xl">Products</h1>
 
     <div className="flex border border-gray-200 p-2 rounded mt-2 overflow-x-auto">
       {StockProductsData.map((stockProductData) => (
@@ -17,7 +17,7 @@ const StockProducts = ( {addProduct} ) => {
           key={stockProductData.itemNumber}
           onClick={() => handleClick(stockProductData)}
         >
-          <img src={stockProductData.image} alt={stockProductData.name} className="block w-full rounded shadow p-2 bg-white" />
+          <img data-testid={`product-add-${stockProductData.name}`} src={stockProductData.image} alt={stockProductData.name} className="block w-full rounded shadow p-2 bg-white" />
           <h4 className="flex flex-1 items-center font-semibold leading-4 mt-2">{stockProductData.name}</h4>
           <button type="button" className="absolute w-8 top-0.5 right-0.5 p-0.5 bg-white shadow rounded-full bg-green-100">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="rgba(16, 185, 129)">

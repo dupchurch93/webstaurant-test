@@ -1,46 +1,34 @@
-import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
-import BuyListItem from "./BuyListItem"
+import "@testing-library/jest-dom";
+import { render, screen } from "@testing-library/react";
+import BuyList from "./BuyList";
 
-describe("The BuyListItem Component", () => {
-    describe("renders", () => {
-        beforeEach(() => {
-            const testProduct1 = {
-                "itemNumber": "1",
-                "name": "test1",
-                "image": "https://cdnimg.webstaurantstore.com/images/products/small/204813/1411756.jpg",
-                "description": "this is the first test object",
-                "price": 13.83,
-                "quantity": 3
-            }
+describe("The BuyList component", () => {
+  beforeEach(() => {
+    const testBuyList = {
+      addedItems: {
+        "100BTWINE": {
+          itemNumber: "100BTWINE",
+          name: "Butcher Twine",
+          image:
+            "https://cdnimg.webstaurantstore.com/images/products/small/6025/708572.jpg",
+          description: "#24 Gauge Butcher Sausage Twine 2 lb. Spool",
+          price: 6.3,
+          quantity: 1,
+        },
+        "267010005": {
+          itemNumber: "267010005",
+          name: "Dinner Fork",
+          image:
+            "https://cdnimg.webstaurantstore.com/images/products/small/369282/1504115.jpg",
+          description:
+            'Choice Windsor 7" 18/0 Stainless Steel Dinner Fork - 12/Case',
+          price: 1.29,
+          quantity: 3
+        },
+      },
+      total: 10.17
+    };
 
-            render(<BuyListItem product={testProduct1}/>)
-        })
-
-        it("should have a name that matches the product name", () => {
-            const title = screen.getByTestId("product-name")
-            expect(title).toHaveTextContent("test1");
-        });
-
-        it("should have an image of the product", () => {
-            const image = screen.getByTestId("product-image")
-            expect(image).toHaveProperty("src", "https://cdnimg.webstaurantstore.com/images/products/small/204813/1411756.jpg")
-        });
-
-        it("should have a price that matches the product price", () => {
-            const price = screen.getByTestId("product-price")
-            expect(price).toHaveTextContent("13.83");
-        });
-
-        it("should have a quantity that matches the amount in the buy list", () => {
-            const quantity = screen.getByTestId("product-quantity")
-            expect(quantity.value).toEqual("3");
-        });
-
-        it("should have a total equal to the quantity multiplied by the product price", () => {
-            const total = screen.getByTestId("total-price")
-            expect(total).toHaveTextContent(`${13.83 * 3}`)
-        });
-
-    })
-})
+    render(<BuyList buyList={testBuyList}/>)
+  });
+});
