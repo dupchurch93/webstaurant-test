@@ -36,7 +36,7 @@ function App() {
 
         <BuyList buyList={buyList} setBuyList={setBuyList} />
 
-        <div className="text-right font-semibold text-lg mt-4">
+        <div data-testid="grand-total" className="text-right font-semibold text-lg mt-4">
           Total:
           <span className="text-xl ml-2">${(Math.round(buyList.total * 100) / 100).toFixed(2)}</span>
         </div>
