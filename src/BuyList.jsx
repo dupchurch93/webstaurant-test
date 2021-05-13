@@ -13,7 +13,10 @@ const BuyList = ({ buyList, setBuyList }) => {
   const setProduct = (newQuant, product) =>{
     // if new quantity less than 0 is entered, set to 0
     if(newQuant < 0){
-      newQuant = 0
+      newQuant = 0;
+    }
+    if(newQuant > 1000){
+      newQuant = 1000;
     }
     const updatedBuyList = Object.assign({}, buyList);
     // get currentQuantity

@@ -18,7 +18,7 @@ const BuyListItem = ({product, deleteProduct, setProduct}) => {
         <span className="flex items-center font-semibold">x</span>
 
         <div className="flex items-center justify-center">
-          <input data-testid={`product-quantity-${product.name}`} type="number" min="0" className="border border-gray-300 rounded w-24 text-lg px-2" value={product.quantity} onChange={(e) => setProduct(e.target.value, product)}/>
+          <input data-testid={`product-quantity-${product.name}`} type="number" min="0" max="1000" className="border border-gray-300 rounded w-24 text-lg px-2" value={product.quantity} onChange={(e) => setProduct(e.target.value, product)}/>
         </div>
 
         <span className="flex items-center">=</span>
